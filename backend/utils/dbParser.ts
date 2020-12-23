@@ -1,4 +1,4 @@
-function parseData(data){ 
+function parseData(data: any){ 
     return JSON.parse(JSON.stringify(data))
 }
 

@@ -10,9 +10,9 @@ const dbParser = require('../utils/dbParser');
 const db =  mysql.createPool(config);
 
 
-const getQrInfo = async(req,res,next) => {
+const getQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: any) => any; },next: (arg0: any) => any) => {
         try{
-            let parsedData
+            let parsedData: { qrkey: any; }[]
             const {clientId} = req.body
             if (!clientId) {
                 return next(ApiError.BadRequest(`missing required parameters`))
@@ -36,10 +36,10 @@ const getQrInfo = async(req,res,next) => {
         }   
 }
 
-const putQrInfo = async(req,res,next) => {
+const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: any) => any; },next: (arg0: any) => any) => {
     try{
         const {clientId} = req.body
-        //future bug, diff device to refresh qr
+        // future bug, diff device to refresh qr
         if (!clientId) {
             return next(ApiError.BadRequest(`missing required parameters`))
         }
@@ -65,7 +65,7 @@ const putQrInfo = async(req,res,next) => {
     }   
 }
 
-module.exports = {
+export {
     getQrInfo,
     putQrInfo,
     
