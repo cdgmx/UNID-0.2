@@ -4,7 +4,7 @@ const config = require ('../database/dbconfig');
 const handle = require('../handlers/promiseHandler');
 
 
-const ApiError = require('../middlewares/errorAPI')
+import {ErrorAPI} from '../middlewares/errorAPI';
 const dbParser = require('../utils/dbParser');
 
 const db =  mysql.createPool(config);
@@ -14,8 +14,9 @@ const getQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
         try{
             let parsedData: { qrkey: any; }[]
             const {clientId} = req.body
+
             if (!clientId) {
-                return next(ApiError.BadRequest(`missing required parameters`))
+                return next(ErrorAPI.BadRequest(`missing required parameters`))
             }
             const sqlSelect = `SELECT qrkey FROM users WHERE clientId = ?` 
             const [data, dataError] = await handle(db.execute(sqlSelect, [clientId]))
@@ -28,11 +29,11 @@ const getQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
                 
             }
 
-            return next(ApiError.NotFound(`No data Found`))
+            return next(ErrorAPI.NotFound(`No data Found`))
         }
         catch (error){
             console.log(error)
-            return next(ApiError.Internal(`${error}`))
+            return next(ErrorAPI.Internal(`${error}`))
         }   
 }
 
@@ -41,7 +42,8 @@ const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
         const {clientId} = req.body
         // future bug, diff device to refresh qr
         if (!clientId) {
-            return next(ApiError.BadRequest(`missing required parameters`))
+            console.log("Bad Request")
+            return next(ErrorAPI.BadRequest(`missing required parameters`))
         }
 
         const qrkey = uuidv4()
@@ -56,14 +58,16 @@ const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
             return res.send(response[0].info)
         }
 
-        return next(ApiError.NotFound(`No data Found`))
+        return next(ErrorAPI.NotFound(`No data Found`))
      
     }
     catch (error){
         console.log(error)
-        return next(ApiError.Internal(`${error}`))
+        return next(ErrorAPI.Internal(`${error}`))
     }   
 }
+
+
 
 export default {
     getQrInfo,
