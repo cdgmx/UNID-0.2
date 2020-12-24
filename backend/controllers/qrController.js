@@ -10,9 +10,9 @@ const dbParser = require('../utils/dbParser');
 const db =  mysql.createPool(config);
 
 
-const getQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: any) => any; },next: (arg0: any) => any) => {
+const getQrInfo = async(req,res,next) => {
         try{
-            let parsedData: { qrkey: any; }[]
+            let parsedData
             const {clientId} = req.body
             if (!clientId) {
                 return next(ApiError.BadRequest(`missing required parameters`))
@@ -36,10 +36,10 @@ const getQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
         }   
 }
 
-const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: any) => any; },next: (arg0: any) => any) => {
+const putQrInfo = async(req,res,next) => {
     try{
         const {clientId} = req.body
-        // future bug, diff device to refresh qr
+        //future bug, diff device to refresh qr
         if (!clientId) {
             return next(ApiError.BadRequest(`missing required parameters`))
         }
@@ -65,6 +65,15 @@ const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
     }   
 }
 
+<<<<<<< HEAD:backend/controllers/qrController.ts
 export = getQrInfo
      
+=======
+module.exports = {
+    getQrInfo,
+    putQrInfo,
+    
+}
+
+>>>>>>> parent of 2cff4a0... converted to TS file:backend/controllers/qrController.js
 

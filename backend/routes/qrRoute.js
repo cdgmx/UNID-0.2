@@ -9,4 +9,4 @@ router.get('/getQr', qrController);
 
 router.use(apiErrorHandler);
 
-export {router};
+module.exports = router

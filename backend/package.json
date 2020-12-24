@@ -5,10 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon index.js",
-    "start": "node dist/app.js",
-    "dev": "nodemon src/index.ts",
-    "build": "tsc -p."
+    "server": "nodemon index.js"
   },
   "author": "cdgmx",
   "license": "ISC",
@@ -22,17 +19,12 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "qrcode": "^1.4.4",
     "uuid": "^8.3.1"
   },
   "devDependencies": {
-    "@types/body-parser": "^1.19.0",
-    "@types/cookie-parser": "^1.4.2",
-    "@types/cors": "^2.8.9",
-    "@types/express": "^4.17.9",
-    "@types/morgan": "^1.9.2",
-    "@types/node": "^14.14.14",
     "eslint": "^7.14.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-node": "^4.1.0",
@@ -43,10 +35,6 @@
     "eslint-plugin-prettier": "^3.2.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.0.0",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.6",
-    "prettier": "^2.2.1",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.3"
+    "prettier": "^2.2.1"
   }
 }
