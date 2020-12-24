@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require('uuid')
-import mysql from 'mysql2/promise';
-import config from '../database/dbconfig';
-import handle from '../handlers/promiseHandler';
+const mysql = require('mysql2/promise');
+const config = require ('../database/dbconfig');
+const handle = require('../handlers/promiseHandler');
 
 
 const ApiError = require('../middlewares/errorAPI')
@@ -10,9 +10,9 @@ const dbParser = require('../utils/dbParser');
 const db =  mysql.createPool(config);
 
 
-const getQrInfo = async(req,res,next) => {
+const getQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: any) => any; },next: (arg0: any) => any) => {
         try{
-            let parsedData
+            let parsedData: { qrkey: any; }[]
             const {clientId} = req.body
             if (!clientId) {
                 return next(ApiError.BadRequest(`missing required parameters`))
@@ -36,10 +36,10 @@ const getQrInfo = async(req,res,next) => {
         }   
 }
 
-const putQrInfo = async(req,res,next) => {
+const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: any) => any; },next: (arg0: any) => any) => {
     try{
         const {clientId} = req.body
-        //future bug, diff device to refresh qr
+        // future bug, diff device to refresh qr
         if (!clientId) {
             return next(ApiError.BadRequest(`missing required parameters`))
         }
@@ -65,18 +65,10 @@ const putQrInfo = async(req,res,next) => {
     }   
 }
 
-<<<<<<< HEAD:backend/controllers/qrController.js
-<<<<<<< HEAD:backend/controllers/qrController.ts
-export = getQrInfo
-     
-=======
-=======
->>>>>>> parent of 2cff4a0... converted to TS file:backend/controllers/qrController.ts
-module.exports = {
+export {
     getQrInfo,
     putQrInfo,
     
 }
 
->>>>>>> parent of 2cff4a0... converted to TS file:backend/controllers/qrController.js
 

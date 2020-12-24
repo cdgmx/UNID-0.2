@@ -7,4 +7,4 @@ const handle = async (promise: Promise<any>) => {
     }
   }
 
-export default handle;
+module.exports = handle;
