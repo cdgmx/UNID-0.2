@@ -5,5 +5,5 @@ const config = {
     database: "crud",
   };
   
-  module.exports = config;
+export default config;
   

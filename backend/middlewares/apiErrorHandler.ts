@@ -8,11 +8,9 @@ function apiErrorHandler(err: { code: any; message: any; }, req: any, res: { sta
         return;
     }
 
-    // res.send("data")
     console.log("err obj")
-   
-    // console.log(err)
+ 
 
 }
 
-module.exports = apiErrorHandler;
+export default apiErrorHandler;

@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require('uuid')
-const mysql = require('mysql2/promise');
-const config = require ('../database/dbconfig');
-const handle = require('../handlers/promiseHandler');
+import mysql from 'mysql2/promise';
+import config from '../database/dbconfig';
+import handle from '../handlers/promiseHandler';
 
 
 const ApiError = require('../middlewares/errorAPI')
@@ -65,10 +65,6 @@ const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
     }   
 }
 
-export {
-    getQrInfo,
-    putQrInfo,
-    
-}
-
+export = getQrInfo
+     
 
