@@ -20,4 +20,6 @@ class ErrorAPI{
 
 }
 
-module.exports = ErrorAPI;
+export {
+    ErrorAPI
+};

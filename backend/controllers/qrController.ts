@@ -65,7 +65,7 @@ const putQrInfo = async(req: { body: { clientId: any; }; },res: { send: (arg0: a
     }   
 }
 
-export {
+export default {
     getQrInfo,
     putQrInfo,
     

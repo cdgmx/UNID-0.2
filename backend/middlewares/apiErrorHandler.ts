@@ -1,7 +1,9 @@
-const ApiError = require('./errorAPI')
+import {ErrorAPI} from './errorAPI';
+import{Request, Response} from 'express'
 
-function apiErrorHandler(err: { code: any; message: any; }, req: any, res: { status: (arg0: any) => { (): any; new(): any; json: { (arg0: any): void; new(): any; }; }; }, next: any){
-    if (err instanceof ApiError) {
+
+function errorHandler(err: any, req: Request, res: Response, next: any){
+    if (err instanceof ErrorAPI ) {
         console.log("pass here if error")
         res.status(err.code).json(err.message);
       
@@ -15,4 +17,7 @@ function apiErrorHandler(err: { code: any; message: any; }, req: any, res: { sta
 
 }
 
-module.exports = apiErrorHandler;
+
+export default{
+    errorHandler
+}
